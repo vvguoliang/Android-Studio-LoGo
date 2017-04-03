@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import java.util.List;
 
 import logo.vvguoliang.com.logo.R;
+import logo.vvguoliang.com.logo.Utils.StatusBarUtil;
 
 /**
  * @author: 秦国良
@@ -51,6 +52,11 @@ public abstract class BaseActivity extends FragmentActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         BaseActivityManager.getActivityManager().pushActivity(this);
         mContext = getApplicationContext();
+        setStatusBar();
+    }
+
+    protected void setStatusBar() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.transparent));
     }
 
     @TargetApi(19)

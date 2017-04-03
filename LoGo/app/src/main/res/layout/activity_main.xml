@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linear"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/common_white">
 
-    <FrameLayout
-        android:id="@+id/cat_main_fragment_content"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/common_white" />
+        android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/common_3dp"
-        android:layout_gravity="center"
-        android:background="@android:color/holo_blue_bright" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_home"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical" />
 
-    <logo.vvguoliang.com.logo.View.MainActivityView
-        android:id="@+id/act_main_tab"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/common_48dp"
-        android:layout_gravity="center|bottom"
-        android:background="@color/common_white" />
+        <com.ashokvarma.bottomnavigation.BottomNavigationBar
+            android:id="@+id/bottom_navigation_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:bnbActiveColor="@color/colorPrimaryDark"
+            app:bnbBackgroundColor="@color/common_white"
+            app:bnbBackgroundStyle="background_style_static" />
 
+    </LinearLayout>
+</FrameLayout>
 
-</LinearLayout>
 
