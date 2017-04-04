@@ -78,10 +78,10 @@ public class MainActivity extends BaseActivity implements MainActivityView.OnIte
         linear = (FrameLayout) findViewById(R.id.linear);
         mVpHome = (ViewPager) findViewById(R.id.vp_home);
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
-        mBottomNavigationBar.addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "One"))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "Two"))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "Three"))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "Four"))
+        mBottomNavigationBar.addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "微列"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "Q列"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "发现"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "我的"))
                 .initialise();
 
         mBottomNavigationBar.setTabSelectedListener(onTabSelectedListener);
@@ -268,6 +268,7 @@ public class MainActivity extends BaseActivity implements MainActivityView.OnIte
         }
     };
 
+    //测量整体高度变化，根据变化沉浸式方式不一样，并且广告位置已经留出
     private ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
