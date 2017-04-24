@@ -10,6 +10,15 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            moduleName "MyService"
+            ldLibs "log", "z", "m"
+            //cFlags "-Wall -Wextra -I " + projectDir + "/src/main/jni/include"
+            abiFilters "armeabi", "armeabi-v7a", "x86"
+            stl "stlport_static"        //  支持stl
+            cFlags "-fexceptions"        // 支持exception
+        }
     }
     buildTypes {
         release {

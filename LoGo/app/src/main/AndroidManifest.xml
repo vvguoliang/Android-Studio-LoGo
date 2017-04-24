@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="logo.vvguoliang.com.logo" >
+    package="logo.vvguoliang.com.logo">
 
     <application
         android:allowBackup="true"
@@ -8,14 +8,81 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".Activity.MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="logo.vvguoliang.com.logo.service.MyService"
+            android:exported="true"
+            android:permission="oem.permission.SENDMAIL">
+            <intent-filter android:priority="1000">
+                <action android:name="com.example.myservice" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="logo.vvguoliang.com.logo.service.NewService"
+            android:exported="true"
+            android:process=":new">
+            <intent-filter android:priority="1000">
+                <action android:name="com.example.NewService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="logo.vvguoliang.com.logo.broadcast.BootBroadcast"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="1000">
+                <!-- <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="com.example.broad.action"/>  -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="logo.vvguoliang.com.logo.broadcast.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.alarm.action" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="logo.vvguoliang.com.logo.broadcast.ScreenStatusReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.PACKAGE_RESTARTED" />
+            </intent-filter>
+        </receiver>
+
     </application>
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="25" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RAISED_THREAD_PRIORITY" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 往sdcard中写入数据的权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <!-- 在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <permission
+        android:name="oem.permission.SENDMAIL"
+        android:protectionLevel="normal"></permission>
 
 </manifest>
